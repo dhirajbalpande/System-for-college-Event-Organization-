@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registraion for KCT</title>
+    <style>
+        .html_form {
+            padding: 50px;
+        }
+        
+        .html_form form {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 1px 1px 15px black;
+            /*right-left,top-bottom,blur,color*/
+            width: 90%;
+            text-align: center;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+        
+        .html_form form h2 {
+            color: blue;
+            font-size: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 10px;
+        }
+        
+        .html_form form input {
+            padding: 5px;
+            margin: 10px;
+            width: 90%;
+            outline: none;
+            border: none;
+            border-left: 2px solid orange;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+        
+        .html_form form select {
+            padding: 5px;
+            margin: 10px;
+            width: 90%;
+            outline: none;
+            border: none;
+            border-left: 2px solid orange;
+            /* use for curve the line means corners */
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+        
+        .html_form form button {
+            margin: 10px;
+            padding: 10px;
+            color: blue;
+            background-color: orange;
+            font-weight: bold;
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            box-shadow: 1px 1px 16px black;
+        }
+        /* this is use change color and size when 
+        touch on input tags */
+        
+        .html_form form input:focus {
+            border-left: 4px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="html_form">
+
+        <form name="MyForm" method="POST" action="YOUR_WEBAPP_URL">
+            <marquee>
+                <h2>Registration Form</h2>
+            </marquee>
+
+            <input type="text" name="Name" placeholder="FULL NAME" required><br>
+
+
+            <input type="email" name="Email ID" placeholder="Email Id" required><br>
+
+            <input type="number" name="Number" placeholder="contact number" required><br>
+            <select name="Gender" required>
+                <option>--Gender--</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select><br>
+            <select name="Branch" required>
+            <option>--Branch--</option>
+            <option>IT</option>
+            <option>CSE</option>
+            <option>EXTC</option>
+            <option>ELPO</option>
+            <option>CIVIL</option>
+            <option>MECHANICAL</option>
+            <option>INSTRUMENTATION</option>
+        </select><br>
+            <select name="Year" required>
+            <option>--Year--</option>
+            <option>1st</option>
+            <option>2nd</option>
+            <option>3rd</option>
+            <option>4th</option>
+        </select><br>
+            <select name="Zenith Event" required>
+            <option>--ZENITH Events--</option>
+            <option>Student of the Year</option>
+            <option>Dance</option>
+            <option>Singing</option>
+            <option>Dramas</option>
+            <option>Quiz</option>
+        </select><br>
+            <input type="text" name="College Name" placeholder="college name" required><br>
+            <button type="submit">Register</button>
+            <button type="reset">Refresh</button>
+        </form>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwWCIio6TjD0HwH8DFsQrnG1muKU_-T_FQ7Se2_I6fPeAhz4HURuvwHf3dOu_XVhYfZ/exec'
+        const form = document.forms['MyForm']
+            /* e is for event lisner  e.prevent default it can 
+            prevent the default ....MyForm is the form name ....
+            script url link is copy from deployment */
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
